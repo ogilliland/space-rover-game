@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/planet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/control.tscn" type="PackedScene" id=2]
+[ext_resource path="res://materials/postprocess.gdshader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/curvature = Vector2( 6, 6 )
+shader_param/scanline_opacity = 0.25
 
 [node name="Main" type="Node"]
 
@@ -14,6 +20,15 @@ target = NodePath("../../../../../../Planet/Rover/MainCameraPos")
 target = NodePath("../../../../../../../../../Planet/Rover/RadarPos")
 
 [node name="Planet" parent="." instance=ExtResource( 1 )]
+
+[node name="PostProcess" type="ColorRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="ControlPanel"]
 [editable path="Planet"]
