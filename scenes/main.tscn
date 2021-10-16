@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/planet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/control.tscn" type="PackedScene" id=2]
+
+[node name="Main" type="Node"]
+
+[node name="ControlPanel" parent="." instance=ExtResource( 2 )]
+
+[node name="Camera" parent="ControlPanel/Layout/Instruments/MainCamera/Viewport" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+target = NodePath("../../../../../../Planet/Rover/MainCameraPos")
+
+[node name="Camera" parent="ControlPanel/Layout/Instruments/Telemetry/Radar/Viewport" index="0"]
+target = NodePath("../../../../../../../Planet/Rover/RadarPos")
+
+[node name="Planet" parent="." instance=ExtResource( 1 )]
+
+[editable path="ControlPanel"]
+[editable path="Planet"]
+[editable path="Planet/Rover"]
