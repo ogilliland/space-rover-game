@@ -7,12 +7,11 @@
 
 [node name="ControlPanel" parent="." instance=ExtResource( 2 )]
 
-[node name="Camera" parent="ControlPanel/Layout/Instruments/MainCamera/Viewport" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+[node name="Camera" parent="ControlPanel/Layout/Data/MainCamera/Viewport" index="0"]
 target = NodePath("../../../../../../Planet/Rover/MainCameraPos")
 
-[node name="Camera" parent="ControlPanel/Layout/Instruments/Telemetry/Radar/Viewport" index="0"]
-target = NodePath("../../../../../../../Planet/Rover/RadarPos")
+[node name="Camera" parent="ControlPanel/Layout/Data/Telemetry/HBoxContainer/Radar/ViewportContainer/Viewport" index="0"]
+target = NodePath("../../../../../../../../../Planet/Rover/RadarPos")
 
 [node name="Planet" parent="." instance=ExtResource( 1 )]
 
