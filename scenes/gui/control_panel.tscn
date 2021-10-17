@@ -28,15 +28,15 @@ __meta__ = {
 }
 
 [node name="RoverComms" type="VBoxContainer" parent="Layout"]
-margin_right = 753.0
-margin_bottom = 704.0
+margin_right = 1521.0
+margin_bottom = 1424.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 custom_constants/separation = 8
 
 [node name="MainCamera" type="ViewportContainer" parent="Layout/RoverComms"]
-margin_right = 753.0
-margin_bottom = 348.0
+margin_right = 1521.0
+margin_bottom = 708.0
 size_flags_vertical = 3
 stretch = true
 script = ExtResource( 3 )
@@ -44,9 +44,10 @@ script = ExtResource( 3 )
 [node name="Border" parent="Layout/RoverComms/MainCamera" instance=ExtResource( 4 )]
 
 [node name="Viewport" type="Viewport" parent="Layout/RoverComms/MainCamera"]
-size = Vector2( 753, 348 )
+size = Vector2( 1521, 708 )
 handle_input_locally = false
 render_target_update_mode = 3
+shadow_atlas_size = 4096
 
 [node name="Camera" type="Camera" parent="Layout/RoverComms/MainCamera/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
@@ -54,9 +55,9 @@ cull_mask = 1023
 script = ExtResource( 2 )
 
 [node name="Telemetry" type="Control" parent="Layout/RoverComms"]
-margin_top = 356.0
-margin_right = 753.0
-margin_bottom = 704.0
+margin_top = 716.0
+margin_right = 1521.0
+margin_bottom = 1424.0
 size_flags_vertical = 3
 
 [node name="Border" parent="Layout/RoverComms/Telemetry" instance=ExtResource( 4 )]
@@ -71,15 +72,29 @@ __meta__ = {
 }
 
 [node name="Data" parent="Layout/RoverComms/Telemetry/HBoxContainer" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 324.0
+margin_bottom = 708.0
 
 [node name="Radar" parent="Layout/RoverComms/Telemetry/HBoxContainer" instance=ExtResource( 6 )]
+anchor_bottom = 0.0
+margin_left = 324.0
+margin_right = 1032.0
+margin_bottom = 708.0
+rect_min_size = Vector2( 708, 0 )
 
 [node name="Input" parent="Layout/RoverComms/Telemetry/HBoxContainer" instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1032.0
+margin_right = 1519.0
+margin_bottom = 708.0
 
 [node name="Terminal" parent="Layout" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 761.0
-margin_right = 1264.0
-margin_bottom = 704.0
+margin_left = 1529.0
+margin_right = 2544.0
+margin_bottom = 1424.0
 size_flags_horizontal = 3

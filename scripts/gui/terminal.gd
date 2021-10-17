@@ -28,7 +28,7 @@ func _ready() -> void:
 		_output(message)
 
 func _output(message : Dictionary) -> void:
-	var time = "[color=gray][09:00][/color]"
+	var time = "[color=gray][T+10.23d][/color]"
 	var prefix = ""
 	var suffix = ""
 	match(message.type):

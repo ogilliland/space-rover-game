@@ -32,8 +32,8 @@ __meta__ = {
 }
 
 [node name="Output" type="RichTextLabel" parent="VBoxContainer"]
-margin_right = 1256.0
-margin_bottom = 672.0
+margin_right = 2536.0
+margin_bottom = 1388.0
 size_flags_vertical = 3
 theme = ExtResource( 1 )
 custom_fonts/normal_font = ExtResource( 2 )
@@ -43,21 +43,21 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 680.0
-margin_right = 1256.0
-margin_bottom = 696.0
+margin_top = 1396.0
+margin_right = 2536.0
+margin_bottom = 1416.0
 custom_constants/separation = 16
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_right = 13.0
-margin_bottom = 16.0
+margin_bottom = 20.0
 custom_fonts/font = ExtResource( 2 )
 text = ">"
 
 [node name="Input" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
 margin_left = 29.0
-margin_right = 1256.0
-margin_bottom = 16.0
+margin_right = 2536.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
 custom_styles/focus = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )

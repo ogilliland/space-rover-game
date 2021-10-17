@@ -24,6 +24,9 @@ void fragment() {
 		float resolution = 0.25 / SCREEN_PIXEL_SIZE.y;
 		float intensity = sin(uv.y * resolution * 3.141 * 2.0);
 		intensity = ((0.5 * intensity) + 0.5) * 0.9 + 0.1;
-		COLOR = color * vec4(vec3(pow(intensity, scanline_opacity)), 1.0);
+		color *= vec4(vec3(pow(intensity, scanline_opacity)), 1.0);
+		
+		// TO DO - color correction
+		COLOR = color
 	}
 }
