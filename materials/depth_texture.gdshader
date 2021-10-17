@@ -2,7 +2,7 @@ shader_type spatial;
 render_mode unshaded, depth_test_disable;
 
 const float outline_thickness = 1.0;
-const float depth_sensitivity = 0.2;
+const float depth_sensitivity = 0.05;
 
 void vertex() {
 	POSITION = vec4(VERTEX, 1.0);

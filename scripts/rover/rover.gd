@@ -3,7 +3,7 @@ extends KinematicBody
 const speed : int = 1
 const rot_speed : float = 0.05
 const friction : float = 0.95
-const gravity : int = 10
+const gravity : int = 1
 
 var velocity := Vector3()
 

@@ -53,9 +53,9 @@ radius_scale = 0.9
 
 [node name="Label" type="Label" parent="ViewportContainer/RadialNumbers"]
 margin_left = 341.0
-margin_top = 27.8
+margin_top = 25.8
 margin_right = 377.0
-margin_bottom = 43.8
+margin_bottom = 45.8
 custom_fonts/font = ExtResource( 6 )
 text = "0"
 align = 1
