@@ -8,15 +8,17 @@ var chunk_x : int
 var chunk_z : int
 var chunk_size : int
 var texture_size : int
+var base_color : Color
 var remove : bool = true
 var noise : OpenSimplexNoise
 
-func _init(x, z, chunk_size, texture_size, noise):
+func _init(x, z, chunk_size, texture_size, base_color, noise):
 	self.chunk_x = x
 	self.chunk_z = z
-	self.noise = noise
 	self.chunk_size = chunk_size
 	self.texture_size = texture_size
+	self.base_color = base_color
+	self.noise = noise
 
 func _ready() -> void:
 	var ground_texture = generate_texture()
@@ -35,7 +37,7 @@ func generate_texture() -> ImageTexture:
 	var image_data = Image.new()
 
 	image_data.create(texture_size, texture_size, false, Image.FORMAT_RGB8)
-	image_data.fill(Color(0.5, 0.5, 0.5))
+	image_data.fill(base_color)
 	image_data.lock()
 
 #	for x in range(texture_size):

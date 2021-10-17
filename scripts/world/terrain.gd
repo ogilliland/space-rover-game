@@ -2,6 +2,7 @@
 extends Spatial
 
 export var rover_path : NodePath
+export var base_color : Color
 
 var texture_size : int = 32 # pixels
 var chunk_size : int = 32 # meters
@@ -41,7 +42,7 @@ func load_chunk(arr):
 	var x = arr[1]
 	var z = arr[2]
 	
-	var chunk = TerrainChunk.new(x, z, chunk_size, texture_size, noise)
+	var chunk = TerrainChunk.new(x, z, chunk_size, texture_size, base_color, noise)
 	call_deferred("load_done", chunk, thread)
 
 func load_done(chunk, thread):

@@ -5,11 +5,11 @@
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
-background_color = Color( 0.768627, 0.768627, 0.768627, 1 )
-ambient_light_color = Color( 1, 1, 1, 1 )
+background_color = Color( 1, 0.901961, 0.701961, 1 )
+ambient_light_color = Color( 1, 0.901961, 0.701961, 1 )
 ambient_light_energy = 0.25
 fog_enabled = true
-fog_color = Color( 0.768627, 0.768627, 0.768627, 1 )
+fog_color = Color( 1, 0.901961, 0.701961, 1 )
 fog_depth_begin = 150.0
 fog_depth_end = 200.0
 
@@ -27,6 +27,7 @@ shadow_enabled = true
 [node name="Terrain" type="Spatial" parent="."]
 script = ExtResource( 2 )
 rover_path = NodePath("../Rover")
+base_color = Color( 0.752941, 0.568627, 0.215686, 1 )
 
 [node name="Rover" parent="." instance=ExtResource( 1 )]
 
