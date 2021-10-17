@@ -1,6 +1,26 @@
 tool
 extends TextureRect
 
+export var ring_scale : float = 0.25
+
+func draw_iris(center, radius, color) -> void:
+	var nb_points = 32
+	var points_arc = PoolVector2Array()
+	var colors = PoolColorArray([color])
+	
+	points_arc.push_back(Vector2(0, 0))
+	
+	for i in range(nb_points + 1):
+		var angle_point = deg2rad(i * 360 / nb_points - 90)
+		points_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
+	
+	points_arc.push_back(Vector2(0, 0))
+	points_arc.push_back(Vector2(0, rect_size.y))
+	points_arc.push_back(rect_size)
+	points_arc.push_back(Vector2(rect_size.x, 0))
+	
+	draw_polygon(points_arc, colors)
+
 func draw_dotted_arc(center, radius, angle_from, angle_to, color) -> void:
 	var nb_points = (angle_to - angle_from) * 4 * radius / rect_size.x
 	
@@ -30,10 +50,19 @@ func _draw() -> void:
 	var angle_from = 0
 	var angle_to = 360
 	var color = Color(1, 1, 1)
+	
+	draw_iris(center, rect_size.x * 0.4, Color(0, 0, 0))
 	draw_line(center, center - Vector2(0, rect_size.x * 0.4), color, 1.75)
 	draw_ticks(center, rect_size.x * 0.4, angle_from, angle_to, color)
-	draw_dotted_arc(center, rect_size.x * 0.35, angle_from, angle_to, color)
-	draw_dotted_arc(center, rect_size.x * 0.275, angle_from, angle_to, color)
-	draw_dotted_arc(center, rect_size.x * 0.2, angle_from, angle_to, color)
-	draw_dotted_arc(center, rect_size.x * 0.125, angle_from, angle_to, color)
-	draw_dotted_arc(center, rect_size.x * 0.05, angle_from, angle_to, color)
+	
+	if ring_scale > 0:
+		var num_rings = floor(1.0 / ring_scale)
+		
+		for ring in range(1, num_rings):
+			draw_dotted_arc(center, rect_size.x * 0.4 * ring * ring_scale, angle_from, angle_to, color)
+	
+#	draw_dotted_arc(center, rect_size.x * 0.35, angle_from, angle_to, color)
+#	draw_dotted_arc(center, rect_size.x * 0.275, angle_from, angle_to, color)
+#	draw_dotted_arc(center, rect_size.x * 0.2, angle_from, angle_to, color)
+#	draw_dotted_arc(center, rect_size.x * 0.125, angle_from, angle_to, color)
+#	draw_dotted_arc(center, rect_size.x * 0.05, angle_from, angle_to, color)

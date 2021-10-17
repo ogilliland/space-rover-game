@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/gui/terminal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/camera.gd" type="Script" id=2]
+[ext_resource path="res://scripts/gui/viewport_container.gd" type="Script" id=3]
+[ext_resource path="res://scenes/gui/components/border.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/gui/data.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gui/radar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/gui/files.tscn" type="PackedScene" id=7]
+
+[node name="ControlPanel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Layout" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="VBoxContainer" parent="Layout"]
+margin_right = 753.0
+margin_bottom = 704.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+custom_constants/separation = 8
+
+[node name="MainCamera" type="ViewportContainer" parent="Layout/Data"]
+margin_right = 753.0
+margin_bottom = 348.0
+size_flags_vertical = 3
+stretch = true
+script = ExtResource( 3 )
+
+[node name="Border" parent="Layout/Data/MainCamera" instance=ExtResource( 4 )]
+
+[node name="Viewport" type="Viewport" parent="Layout/Data/MainCamera"]
+size = Vector2( 753, 348 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="Layout/Data/MainCamera/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+cull_mask = 1023
+script = ExtResource( 2 )
+
+[node name="Telemetry" type="Control" parent="Layout/Data"]
+margin_top = 356.0
+margin_right = 753.0
+margin_bottom = 704.0
+size_flags_vertical = 3
+
+[node name="Border" parent="Layout/Data/Telemetry" instance=ExtResource( 4 )]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Layout/Data/Telemetry"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -2.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" parent="Layout/Data/Telemetry/HBoxContainer" instance=ExtResource( 5 )]
+
+[node name="Radar" parent="Layout/Data/Telemetry/HBoxContainer" instance=ExtResource( 6 )]
+
+[node name="Files" parent="Layout/Data/Telemetry/HBoxContainer" instance=ExtResource( 7 )]
+
+[node name="Terminal" parent="Layout" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 761.0
+margin_right = 1264.0
+margin_bottom = 704.0
+size_flags_horizontal = 3

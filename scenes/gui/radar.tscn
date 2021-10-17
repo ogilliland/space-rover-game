@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/gui/radar.gd" type="Script" id=1]
+[ext_resource path="res://scripts/gui/radar_background.gd" type="Script" id=2]
+[ext_resource path="res://scripts/camera.gd" type="Script" id=3]
+[ext_resource path="res://scenes/gui/components/gui_toggle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fonts/graph_35_pix.tres" type="DynamicFont" id=6]
+[ext_resource path="res://materials/depth_texture.gdshader" type="Shader" id=7]
+[ext_resource path="res://scripts/gui/radar_numbers.gd" type="Script" id=8]
+[ext_resource path="res://scripts/gui/viewport_container.gd" type="Script" id=9]
+[ext_resource path="res://scenes/postprocess/depth_texture.tscn" type="PackedScene" id=10]
+
+[sub_resource type="QuadMesh" id=1]
+size = Vector2( 2, 2 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 7 )
+
+[node name="Radar" type="Control"]
+margin_left = 161.0
+margin_right = 509.0
+margin_bottom = 348.0
+rect_min_size = Vector2( 348, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+texture_path = NodePath("ViewportContainer/TextureRect")
+camera_path = NodePath("ViewportContainer/Viewport/Camera")
+range_path = NodePath("ViewportContainer/Params/Range")
+rings_path = NodePath("ViewportContainer/Params/Rings")
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_bottom = -2.0
+stretch = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ViewportContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="RadialNumbers" type="Container" parent="ViewportContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+radius_scale = 0.9
+
+[node name="Label" type="Label" parent="ViewportContainer/RadialNumbers"]
+margin_right = 36.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Params" type="VBoxContainer" parent="ViewportContainer"]
+margin_left = 8.0
+margin_top = 8.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="Range" parent="ViewportContainer/Params" instance=ExtResource( 4 )]
+anchor_right = 0.0
+margin_right = 128.0
+margin_bottom = 32.0
+label = "Range"
+value = 100.0
+
+[node name="Rings" parent="ViewportContainer/Params" instance=ExtResource( 4 )]
+anchor_right = 0.0
+margin_top = 36.0
+margin_right = 128.0
+margin_bottom = 68.0
+label = "Rings"
+value = 25.0
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 346, 344 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0 )
+cull_mask = 31775
+projection = 1
+size = 250.0
+script = ExtResource( 3 )
+
+[node name="DepthTexture" parent="ViewportContainer/Viewport/Camera" instance=ExtResource( 10 )]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[connection signal="toggle" from="ViewportContainer/Params/Range" to="." method="_toggle_range"]
+[connection signal="toggle" from="ViewportContainer/Params/Rings" to="." method="_toggle_rings"]
