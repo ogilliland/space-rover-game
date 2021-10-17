@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/gui/radar.gd" type="Script" id=1]
 [ext_resource path="res://scripts/gui/radar_background.gd" type="Script" id=2]
@@ -8,13 +8,14 @@
 [ext_resource path="res://materials/depth_texture.gdshader" type="Shader" id=7]
 [ext_resource path="res://scripts/gui/radar_numbers.gd" type="Script" id=8]
 [ext_resource path="res://scripts/gui/viewport_container.gd" type="Script" id=9]
-[ext_resource path="res://scenes/postprocess/depth_texture.tscn" type="PackedScene" id=10]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 2, 2 )
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 7 )
+shader_param/contour_height = 2.0
+shader_param/contour_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 
 [node name="Radar" type="Control"]
 anchor_bottom = 0.5
@@ -92,8 +93,11 @@ cull_mask = 31775
 projection = 1
 size = 250.0
 script = ExtResource( 3 )
+copy_rotation = false
 
-[node name="DepthTexture" parent="ViewportContainer/Viewport/Camera" instance=ExtResource( 10 )]
+[node name="DepthTexture" type="MeshInstance" parent="ViewportContainer/Viewport/Camera"]
+layers = 1024
+extra_cull_margin = 16384.0
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 

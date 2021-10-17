@@ -1,8 +1,10 @@
 shader_type spatial;
 render_mode unshaded, depth_test_disable;
 
+uniform float contour_height = 2.0; // meters
+uniform vec4 contour_color : hint_color;
+
 const float outline_thickness = 1.0;
-const float depth_sensitivity = 0.05;
 
 void vertex() {
 	POSITION = vec4(VERTEX, 1.0);
@@ -32,14 +34,10 @@ void fragment() {
 	float depth_sample2 = get_depth(uv2, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
 	float depth_sample3 = get_depth(uv3, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
 	
-	float depth_diff0 = depth_sample1 - depth_sample0;
-	float depth_diff1 = depth_sample3 - depth_sample2;
-	float edge_depth = sqrt(pow(depth_diff0, 2) + pow(depth_diff1, 2)) * 100.0;
-	float depth_threshold = (1.0/depth_sensitivity) * depth_sample0;
-	edge_depth = edge_depth > depth_threshold ? 1.0 : 0.0;
-
-	if(edge_depth == 1.0) {
-		ALBEDO = vec3(1);
+	float edge0 = floor(depth_sample1 / contour_height);
+	float edge1 = floor(depth_sample3 / contour_height);
+	if(depth_sample0 < edge0 * contour_height || depth_sample0 > (edge0 + 1.0) * contour_height || depth_sample2 < edge1 * contour_height ||  depth_sample2 > (edge1 + 1.0) * contour_height) {
+		ALBEDO = contour_color.rgb;
 	} else {
 		ALBEDO = vec3(0);
 	}
