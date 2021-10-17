@@ -1,33 +1,267 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/gui/components/border.tscn" type="PackedScene" id=1]
-[ext_resource path="res://textures/border.png" type="Texture" id=2]
+[ext_resource path="res://scenes/gui/components/gui_value.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gui/components/border_line.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gui/components/label.tscn" type="PackedScene" id=4]
 
 [node name="Data" type="Control"]
-margin_right = 161.0
-margin_bottom = 348.0
+anchor_right = 0.1
+anchor_bottom = 0.5
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Border" type="NinePatchRect" parent="." instance=ExtResource( 1 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Border" parent="." instance=ExtResource( 1 )]
 margin_right = 2.0
-texture = ExtResource( 2 )
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 8
+custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Chrono" type="Control" parent="VBoxContainer"]
+margin_right = 256.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Chrono"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = -12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" parent="VBoxContainer/Chrono/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 232.0
+margin_bottom = 24.0
+text = "Chrono"
+uppercase = true
+
+[node name="Time" parent="VBoxContainer/Chrono/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 28.0
+margin_right = 232.0
+margin_bottom = 60.0
+label = "  T+"
+value = 10.23
+unit = " d "
+
+[node name="DayLength" parent="VBoxContainer/Chrono/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 64.0
+margin_right = 232.0
+margin_bottom = 96.0
+label = "Per."
+value = 0.87
+unit = " d "
+
+[node name="BorderLine1" parent="VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_top = 120.0
+margin_right = 256.0
+margin_bottom = 122.0
+
+[node name="Position" type="Control" parent="VBoxContainer"]
+margin_top = 122.0
+margin_right = 256.0
+margin_bottom = 242.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Position"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = -12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" parent="VBoxContainer/Position/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 232.0
+margin_bottom = 24.0
+text = "POSITION"
+uppercase = true
+
+[node name="Latitude" parent="VBoxContainer/Position/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 28.0
+margin_right = 232.0
+margin_bottom = 60.0
+label = "Lat."
+value = 17.243
+unit = "min"
+
+[node name="Longitude" parent="VBoxContainer/Position/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 64.0
+margin_right = 232.0
+margin_bottom = 96.0
+label = "Long."
+value = 3.948
+unit = "min"
+
+[node name="BorderLine2" parent="VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_top = 242.0
+margin_right = 256.0
+margin_bottom = 244.0
+
+[node name="Speed" type="Control" parent="VBoxContainer"]
+margin_top = 244.0
+margin_right = 256.0
+margin_bottom = 364.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Speed"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = -12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" parent="VBoxContainer/Speed/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 232.0
+margin_bottom = 24.0
+text = "SPEED"
+uppercase = true
+
+[node name="Velocity" parent="VBoxContainer/Speed/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 28.0
+margin_right = 232.0
+margin_bottom = 60.0
+label = "Vel."
+unit = "m/s"
+
+[node name="Drift" parent="VBoxContainer/Speed/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 64.0
+margin_right = 232.0
+margin_bottom = 96.0
+label = "Drift"
+unit = "m/s"
+
+[node name="BorderLine3" parent="VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_top = 364.0
+margin_right = 256.0
+margin_bottom = 366.0
+
+[node name="Physical" type="Control" parent="VBoxContainer"]
+margin_top = 366.0
+margin_right = 256.0
+margin_bottom = 522.0
+rect_min_size = Vector2( 0, 156 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Physical"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = -12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" parent="VBoxContainer/Physical/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 232.0
+margin_bottom = 24.0
+text = "Physical"
+uppercase = true
+
+[node name="Gravity" parent="VBoxContainer/Physical/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 28.0
+margin_right = 232.0
+margin_bottom = 60.0
+label = "Grav."
+value = 0.374
+unit = " g "
+
+[node name="Radius" parent="VBoxContainer/Physical/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 64.0
+margin_right = 232.0
+margin_bottom = 96.0
+label = "Rad."
+value = 3396.0
+unit = "km "
+
+[node name="Mass" parent="VBoxContainer/Physical/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 100.0
+margin_right = 232.0
+margin_bottom = 132.0
+label = "Mass"
+value = 0.107
+unit = " E "
+
+[node name="BorderLine4" parent="VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_top = 522.0
+margin_right = 256.0
+margin_bottom = 524.0
+
+[node name="Thermal" type="Control" parent="VBoxContainer"]
+margin_top = 524.0
+margin_right = 256.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 0, 84 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Thermal"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = -12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" parent="VBoxContainer/Thermal/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 232.0
+margin_bottom = 24.0
+text = "Thermal"
+uppercase = true
+
+[node name="Temperature" parent="VBoxContainer/Thermal/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 28.0
+margin_right = 232.0
+margin_bottom = 60.0
+label = "Temp."
+value = -130.0
+unit = "°C "
+
+[node name="BorderLine5" parent="VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_top = 608.0
+margin_right = 256.0
+margin_bottom = 610.0

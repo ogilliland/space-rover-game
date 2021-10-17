@@ -17,10 +17,8 @@ size = Vector2( 2, 2 )
 shader = ExtResource( 7 )
 
 [node name="Radar" type="Control"]
-margin_left = 161.0
-margin_right = 509.0
-margin_bottom = 348.0
-rect_min_size = Vector2( 348, 0 )
+anchor_bottom = 0.5
+rect_min_size = Vector2( 720, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -54,21 +52,23 @@ script = ExtResource( 8 )
 radius_scale = 0.9
 
 [node name="Label" type="Label" parent="ViewportContainer/RadialNumbers"]
-margin_right = 36.0
-margin_bottom = 8.0
+margin_left = 341.0
+margin_top = 27.8
+margin_right = 377.0
+margin_bottom = 43.8
 custom_fonts/font = ExtResource( 6 )
 text = "0"
 align = 1
 valign = 1
 
 [node name="Params" type="VBoxContainer" parent="ViewportContainer"]
-margin_left = 8.0
+margin_left = 12.0
 margin_top = 8.0
-rect_min_size = Vector2( 128, 0 )
+rect_min_size = Vector2( 176, 0 )
 
 [node name="Range" parent="ViewportContainer/Params" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_right = 128.0
+margin_right = 176.0
 margin_bottom = 32.0
 label = "Range"
 value = 100.0
@@ -76,13 +76,13 @@ value = 100.0
 [node name="Rings" parent="ViewportContainer/Params" instance=ExtResource( 4 )]
 anchor_right = 0.0
 margin_top = 36.0
-margin_right = 128.0
+margin_right = 176.0
 margin_bottom = 68.0
 label = "Rings"
 value = 25.0
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 346, 344 )
+size = Vector2( 718, 716 )
 handle_input_locally = false
 render_target_update_mode = 3
 

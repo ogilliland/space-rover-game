@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/gui/components/border.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/gui/data.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/gui/radar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/gui/files.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/gui/input.tscn" type="PackedScene" id=7]
 
 [node name="ControlPanel" type="Control"]
 anchor_right = 1.0
@@ -27,41 +27,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Data" type="VBoxContainer" parent="Layout"]
+[node name="RoverComms" type="VBoxContainer" parent="Layout"]
 margin_right = 753.0
 margin_bottom = 704.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 custom_constants/separation = 8
 
-[node name="MainCamera" type="ViewportContainer" parent="Layout/Data"]
+[node name="MainCamera" type="ViewportContainer" parent="Layout/RoverComms"]
 margin_right = 753.0
 margin_bottom = 348.0
 size_flags_vertical = 3
 stretch = true
 script = ExtResource( 3 )
 
-[node name="Border" parent="Layout/Data/MainCamera" instance=ExtResource( 4 )]
+[node name="Border" parent="Layout/RoverComms/MainCamera" instance=ExtResource( 4 )]
 
-[node name="Viewport" type="Viewport" parent="Layout/Data/MainCamera"]
+[node name="Viewport" type="Viewport" parent="Layout/RoverComms/MainCamera"]
 size = Vector2( 753, 348 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Camera" type="Camera" parent="Layout/Data/MainCamera/Viewport"]
+[node name="Camera" type="Camera" parent="Layout/RoverComms/MainCamera/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 cull_mask = 1023
 script = ExtResource( 2 )
 
-[node name="Telemetry" type="Control" parent="Layout/Data"]
+[node name="Telemetry" type="Control" parent="Layout/RoverComms"]
 margin_top = 356.0
 margin_right = 753.0
 margin_bottom = 704.0
 size_flags_vertical = 3
 
-[node name="Border" parent="Layout/Data/Telemetry" instance=ExtResource( 4 )]
+[node name="Border" parent="Layout/RoverComms/Telemetry" instance=ExtResource( 4 )]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Layout/Data/Telemetry"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Layout/RoverComms/Telemetry"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -2.0
@@ -70,11 +70,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Data" parent="Layout/Data/Telemetry/HBoxContainer" instance=ExtResource( 5 )]
+[node name="Data" parent="Layout/RoverComms/Telemetry/HBoxContainer" instance=ExtResource( 5 )]
 
-[node name="Radar" parent="Layout/Data/Telemetry/HBoxContainer" instance=ExtResource( 6 )]
+[node name="Radar" parent="Layout/RoverComms/Telemetry/HBoxContainer" instance=ExtResource( 6 )]
 
-[node name="Files" parent="Layout/Data/Telemetry/HBoxContainer" instance=ExtResource( 7 )]
+[node name="Input" parent="Layout/RoverComms/Telemetry/HBoxContainer" instance=ExtResource( 7 )]
 
 [node name="Terminal" parent="Layout" instance=ExtResource( 1 )]
 anchor_right = 0.0

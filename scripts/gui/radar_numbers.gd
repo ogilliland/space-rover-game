@@ -1,3 +1,4 @@
+tool
 extends Container
 
 const subdiv : int = 36

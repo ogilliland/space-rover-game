@@ -17,8 +17,7 @@ var splash = """
 """
 
 var messages = [
-	{ "type": MESSAGE, "text": "Welcome" },
-	{ "type": MESSAGE, "text": "Type \"help\" to see a list of commands" },
+	{ "type": MESSAGE, "text": "Welcome! Type \"help\" to see a list of commands, or use the graphical interface to the left of this terminal" },
 	{ "type": WARNING, "text": "Satellite uplink damaged, scan to locate" }
 ]
 
@@ -26,9 +25,9 @@ func _ready() -> void:
 	output = $VBoxContainer/Output
 	output.append_bbcode(splash + "\n\n")
 	for message in messages:
-		output(message)
+		_output(message)
 
-func output(message : Dictionary) -> void:
+func _output(message : Dictionary) -> void:
 	var time = "[color=gray][09:00][/color]"
 	var prefix = ""
 	var suffix = ""

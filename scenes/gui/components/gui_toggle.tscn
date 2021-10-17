@@ -1,62 +1,33 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://fonts/graph_35_pix.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/gui/components/gui_value.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/gui/toggle_param.gd" type="Script" id=2]
 [ext_resource path="res://scenes/gui/components/gui_button.tscn" type="PackedScene" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
+bg_color = Color( 1, 1, 1, 0.501961 )
 
-[node name="Toggle" type="Control"]
-anchor_right = 1.0
-rect_min_size = Vector2( 0, 32 )
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="Toggle" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_constants/separation = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Value" parent="HBoxContainer" index="1"]
+margin_right = 2512.0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_top = 4.0
-margin_right = 65.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 0, 24 )
-custom_fonts/font = ExtResource( 1 )
-text = "Label"
-valign = 1
+[node name="Unit" parent="HBoxContainer" index="2"]
+margin_left = 2520.0
+margin_right = 2560.0
 
-[node name="Value" type="Label" parent="HBoxContainer"]
-margin_left = 73.0
-margin_top = 4.0
-margin_right = 1259.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 0, 24 )
-size_flags_horizontal = 3
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "0"
-align = 2
-valign = 1
-
-[node name="Unit" type="Label" parent="HBoxContainer"]
-margin_left = 1267.0
-margin_top = 4.0
-margin_right = 1280.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 0, 24 )
-custom_fonts/font = ExtResource( 1 )
-text = "m"
-valign = 1
-
-[node name="Button" parent="." instance=ExtResource( 3 )]
+[node name="Button" parent="." index="1" instance=ExtResource( 3 )]
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
 
 [connection signal="pressed" from="Button" to="." method="_on_click"]

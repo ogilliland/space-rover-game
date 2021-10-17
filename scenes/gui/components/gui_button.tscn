@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 0.501961 )
 
+[sub_resource type="StyleBoxEmpty" id=4]
+
 [sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="Button" type="Button"]
 anchor_right = 1.0
@@ -11,8 +15,11 @@ anchor_bottom = 1.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

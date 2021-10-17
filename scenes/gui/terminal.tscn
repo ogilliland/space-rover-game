@@ -22,18 +22,18 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = -16.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = -12.0
 custom_constants/separation = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Output" type="RichTextLabel" parent="VBoxContainer"]
-margin_right = 928.0
-margin_bottom = 484.0
+margin_right = 1256.0
+margin_bottom = 672.0
 size_flags_vertical = 3
 theme = ExtResource( 1 )
 custom_fonts/normal_font = ExtResource( 2 )
@@ -43,10 +43,10 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 492.0
-margin_right = 928.0
-margin_bottom = 508.0
-custom_constants/separation = 4
+margin_top = 680.0
+margin_right = 1256.0
+margin_bottom = 696.0
+custom_constants/separation = 16
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_right = 13.0
@@ -55,8 +55,8 @@ custom_fonts/font = ExtResource( 2 )
 text = ">"
 
 [node name="Input" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_left = 17.0
-margin_right = 928.0
+margin_left = 29.0
+margin_right = 1256.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 custom_styles/focus = SubResource( 1 )

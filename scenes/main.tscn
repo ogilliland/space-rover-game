@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
 shader_param/curvature = Vector2( 6, 6 )
-shader_param/scanline_opacity = 0.25
+shader_param/scanline_opacity = 0.1
 
 [node name="Main" type="Node"]
 
@@ -15,11 +15,61 @@ shader_param/scanline_opacity = 0.25
 
 [node name="ControlPanel" parent="." instance=ExtResource( 2 )]
 
-[node name="Camera" parent="ControlPanel/Layout/Data/MainCamera/Viewport" index="0"]
+[node name="RoverComms" parent="ControlPanel/Layout" index="0"]
+margin_right = 1521.0
+margin_bottom = 1424.0
+
+[node name="MainCamera" parent="ControlPanel/Layout/RoverComms" index="0"]
+margin_right = 1521.0
+margin_bottom = 708.0
+
+[node name="Viewport" parent="ControlPanel/Layout/RoverComms/MainCamera" index="1"]
+size = Vector2( 1521, 708 )
+
+[node name="Camera" parent="ControlPanel/Layout/RoverComms/MainCamera/Viewport" index="0"]
 target = NodePath("../../../../../../Planet/Rover/MainCameraPos")
 
-[node name="Camera" parent="ControlPanel/Layout/Data/Telemetry/HBoxContainer/Radar/ViewportContainer/Viewport" index="0"]
+[node name="Telemetry" parent="ControlPanel/Layout/RoverComms" index="1"]
+margin_top = 716.0
+margin_right = 1521.0
+margin_bottom = 1424.0
+
+[node name="Data" parent="ControlPanel/Layout/RoverComms/Telemetry/HBoxContainer" index="0"]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 324.0
+margin_bottom = 708.0
+
+[node name="Radar" parent="ControlPanel/Layout/RoverComms/Telemetry/HBoxContainer" index="1"]
+anchor_bottom = 0.0
+margin_left = 324.0
+margin_right = 1032.0
+margin_bottom = 708.0
+rect_min_size = Vector2( 708, 0 )
+
+[node name="Label" parent="ControlPanel/Layout/RoverComms/Telemetry/HBoxContainer/Radar/ViewportContainer/RadialNumbers" index="0"]
+margin_left = 335.0
+margin_top = 27.2
+margin_right = 371.0
+margin_bottom = 43.2
+
+[node name="Viewport" parent="ControlPanel/Layout/RoverComms/Telemetry/HBoxContainer/Radar/ViewportContainer" index="3"]
+size = Vector2( 706, 704 )
+
+[node name="Camera" parent="ControlPanel/Layout/RoverComms/Telemetry/HBoxContainer/Radar/ViewportContainer/Viewport" index="0"]
 target = NodePath("../../../../../../../../../Planet/Rover/RadarPos")
+
+[node name="Input" parent="ControlPanel/Layout/RoverComms/Telemetry/HBoxContainer" index="2"]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1032.0
+margin_right = 1519.0
+margin_bottom = 708.0
+
+[node name="Terminal" parent="ControlPanel/Layout" index="1"]
+margin_left = 1529.0
+margin_right = 2544.0
+margin_bottom = 1424.0
 
 [node name="PostProcess" type="ColorRect" parent="."]
 material = SubResource( 1 )
@@ -33,4 +83,4 @@ __meta__ = {
 [editable path="Planet"]
 [editable path="Planet/Rover"]
 [editable path="ControlPanel"]
-[editable path="ControlPanel/Layout/Data/Telemetry/HBoxContainer/Radar"]
+[editable path="ControlPanel/Layout/RoverComms/Telemetry/HBoxContainer/Radar"]

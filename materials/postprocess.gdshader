@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform vec2 curvature = vec2(6.0);
-uniform float scanline_opacity = 0.25;
+uniform float scanline_opacity = 0.1;
 
 void fragment() {
 	// remap UVs to cubic function to simulate screen curvature
