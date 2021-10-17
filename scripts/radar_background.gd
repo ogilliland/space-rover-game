@@ -17,7 +17,9 @@ func draw_ticks(center, radius, angle_from, angle_to, color) -> void:
 	for i in range(nb_points + 1):
 		var length = 2
 		if i % 10 == 0:
-			length = 6
+			length = 16
+		elif i % 5 == 0:
+			length = 8
 		var angle_point = deg2rad(angle_from + i * (angle_to-angle_from) / nb_points - 90)
 		var begin = center + Vector2(cos(angle_point), sin(angle_point)) * radius
 		var end = center + Vector2(cos(angle_point), sin(angle_point)) * (radius + length)
@@ -28,6 +30,7 @@ func _draw() -> void:
 	var angle_from = 0
 	var angle_to = 360
 	var color = Color(1, 1, 1)
+	draw_line(center, center - Vector2(0, rect_size.x * 0.4), color, 1.75)
 	draw_ticks(center, rect_size.x * 0.4, angle_from, angle_to, color)
 	draw_dotted_arc(center, rect_size.x * 0.35, angle_from, angle_to, color)
 	draw_dotted_arc(center, rect_size.x * 0.275, angle_from, angle_to, color)

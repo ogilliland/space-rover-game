@@ -13,11 +13,12 @@ void fragment() {
 	if(uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
 		COLOR = vec4(0, 0, 0, 1); // texture(SCREEN_TEXTURE, vec2(0, 0));
 	} else {
-		ivec2 iuv = ivec2(
-			int(uv.x / SCREEN_PIXEL_SIZE.x),
-			int(uv.y / SCREEN_PIXEL_SIZE.y)
-		);
-		vec4 color = texelFetch(SCREEN_TEXTURE, iuv, 0);
+//		ivec2 iuv = ivec2(
+//			int(uv.x / SCREEN_PIXEL_SIZE.x),
+//			int(uv.y / SCREEN_PIXEL_SIZE.y)
+//		);
+//		vec4 color = texelFetch(SCREEN_TEXTURE, iuv, 0);
+		vec4 color = texture(SCREEN_TEXTURE, uv);
 		
 		// modulate color by sin wave to simulate scanlines
 		float resolution = 0.25 / SCREEN_PIXEL_SIZE.y;
