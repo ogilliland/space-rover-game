@@ -1,0 +1,64 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://materials/rocks_particle.gdshader" type="Shader" id=1]
+[ext_resource path="res://scripts/world/surface_rocks.gd" type="Script" id=2]
+[ext_resource path="res://materials/rocks_material.gdshader" type="Shader" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+octaves = 4
+period = 256.0
+persistence = 0.75
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=2]
+width = 1024
+height = 1024
+noise = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 1 )
+shader_param/rows = 64
+shader_param/spacing = 2.0
+shader_param/noisemap = SubResource( 2 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.454225, 1 )
+colors = PoolColorArray( 0.229336, 0.229336, 0.229336, 1, 0.409023, 0.255948, 0.0536141, 1, 0.791836, 0.515209, 0.212607, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+width = 128
+
+[sub_resource type="OpenSimplexNoise" id=6]
+octaves = 4
+persistence = 0.75
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=7]
+width = 256
+height = 256
+noise = SubResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 3 )
+shader_param/noisemap = SubResource( 7 )
+shader_param/albedo_gradient = SubResource( 9 )
+
+[sub_resource type="SphereMesh" id=5]
+material = SubResource( 4 )
+radius = 0.5
+height = 1.0
+radial_segments = 8
+rings = 4
+
+[node name="SurfaceRocks" type="Particles"]
+layers = 32
+amount = 4096
+explosiveness = 1.0
+visibility_aabb = AABB( -68, 0, -68, 136, 10, 136 )
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )
+script = ExtResource( 2 )
+rows = 64
+spacing = 2.0
