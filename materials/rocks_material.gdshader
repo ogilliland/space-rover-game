@@ -13,7 +13,7 @@ void vertex() {
 	float noise = texture(noisemap, world_pos.zx * 0.02 + VERTEX.xz * 2.0).r;
 	float scale = texture(noisemap, world_pos.xz * 0.02).r;
 	
-	VERTEX *= noise * 2.0 * scale * scale;
+	VERTEX *= noise * scale * scale * scale * 3.0;
 }
 
 void fragment() {

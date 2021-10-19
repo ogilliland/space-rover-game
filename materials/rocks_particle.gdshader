@@ -15,7 +15,6 @@ void vertex() {
 	
 	// center position
 	pos.x -= rows * 0.5;
-	pos.y = 0.0;
 	pos.z -= rows * 0.5;
 	
 	// apply spacing
@@ -30,19 +29,6 @@ void vertex() {
 	float noise2 = texture(noisemap, pos.zx * 0.02 + vec2(0.01)).r;
 	pos.x += (noise - 0.5) * spacing * noise_scale;
 	pos.z += (noise2 - 0.5) * spacing * noise_scale;
-	
-	// rotate particle
-	TRANSFORM[0][0] = 1.0;
-	TRANSFORM[0][1] = 0.0;
-	TRANSFORM[0][2] = 0.0;
-	
-	TRANSFORM[1][0] = 0.0;
-	TRANSFORM[1][1] = 0.0;
-	TRANSFORM[1][2] = -1.0;
-	
-	TRANSFORM[2][0] = 0.0;
-	TRANSFORM[2][1] = 1.0;
-	TRANSFORM[2][2] = 0.0;
 	
 	// move particle to position
 	TRANSFORM[3][0] = pos.x;

@@ -91,4 +91,7 @@ func generate_mesh() -> MeshInstance:
 	ground_mesh.mesh = surface_tool.commit()
 	
 	ground_mesh.create_trimesh_collision()
+	
+	# make visible to main camera (1) and radar (2)
+	ground_mesh.layers = 1 + 2
 	return ground_mesh

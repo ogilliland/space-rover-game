@@ -7,7 +7,7 @@ export var spacing = 1.0 setget set_spacing
 const max_height = 10
 
 func update_aabb():
-	var size = rows * spacing + 8
+	var size = rows * spacing
 	visibility_aabb = AABB(Vector3(-0.5 * size, 0, -0.5 * size), Vector3(size, max_height, size))
 
 func set_rows(new_rows):

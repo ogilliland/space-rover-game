@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/world/planet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gui/control_panel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://materials/postprocess.gdshader" type="Shader" id=3]
+[ext_resource path="res://materials/crt_screen_effect.gdshader" type="Shader" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -41,5 +41,6 @@ __meta__ = {
 
 [editable path="Planet"]
 [editable path="Planet/Rover"]
+[editable path="Planet/Rover/SurfaceRocks"]
 [editable path="ControlPanel"]
 [editable path="ControlPanel/Layout/RoverComms/Telemetry/HBoxContainer/Radar"]
